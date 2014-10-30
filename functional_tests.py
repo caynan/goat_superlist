@@ -36,4 +36,5 @@ class NewVisitorTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    # warnings='ignore' is used to avoid some traceback errors, with Django 1.7.1
     unittest.main(warnings='ignore')
