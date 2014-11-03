@@ -36,19 +36,20 @@ class NewVisitorTest(unittest.TestCase):
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(
-            any(row.text == '1: Buy Milk' for row in rows),
-            "New to-do item did not appear in table"
-        )
+        self.assertIn('1: Buy Milk', [row.text for row in rows])
 
         # There is still a text box invinting the user to add another item.
         # the user enters "Drink Milk"
-        self.fail('Finish the test!')
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys("Drink Milk")
+        inputbox.send_keys(Keys.ENTER)
 
         # The page updates again, and now shows both items on the list
-
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn('2: Drink Milk', [row.text for row in rows])
         # User see unique generated URL -- with some explanatory text
-
+        self.fail('Finish the test!')
         # User visit the URL - the to-do list is still there.
 
         # user closes everything.
