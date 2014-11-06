@@ -15,7 +15,7 @@ class NewVisitorTest(unittest.TestCase):
         table = self.browser.find_element_by_id('id_list_table')
         rows = self.browser.find_elements_by_tag_name('tr')
         self.assertIn(row_text, [row.text for row in rows])
-
+	
     def test_can_start_a_list_and_retrieve_it_later(self):
         # User enters To-Do homepage
         self.browser.get('http://localhost:8000')
